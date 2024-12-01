@@ -26,7 +26,10 @@ def infer():
 
         if success:
             # Run YOLO inference on the frame
-            results = model(frame)
+            try:
+                results = model(frame, device=0)
+            except:
+                results = model(frame)
 
             # Visualize the results on the frame
             annotated_frame = results[0].plot()
